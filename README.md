@@ -89,10 +89,209 @@ Format Methods
 	print('{:b}'.format(43)) # Binary output
 	print('{:x}'.format(43)) # Hexadecimal
 	print('{:o}'.format(43)) # Octal
+Format Output
+	print("""\
+				Hello,
+						This is my message.
+				This is another line.
+				Thanks & Regards
+				Vivek Beniwal
+				""")
+5. Branching
+Logical Operators (< > <= >= != ==), (not and or)
+	print(3 < 9) # Conditional operator returns boolean value
+	print(not var)
+	print(var and var1)
+if statement
+	drink = 'milk'
+	if drink == milk or drink == buttermilk:
+		print("Not lactose intolerant")
+if else statement
+	drink = 'milk'
+	if drink == milk or drink == buttermilk:
+		print("Not lactose intolerant")		
+	else:
+		print("Lactose intolerant")
+if elif statement
+	if drink == milk:
+		print("Milk")
+	elif drink == buttermilk:
+		print("Buttermilk")		
+	else:
+		print("Lactose intolerant")
+Ternary operator
+	print("a is small" if a < b else "a is not small")
+	a = 7 if 3**3 > b else 14
+	print(a)
+6. Loops
+For loop
+	range(start,end,step) # range(0,4,2) step is increment, here 2, default 1, range is start to end-1
+	for i in range(1,10):
+		print(i)
+		
+	for i in range(len(string)):
+		print(string[i])
 	
+	for i in string:
+		print(i)
+While loop
+	while condition != 0:
+		print(condition)
+		condition = condition - 1
+Break and continue statement
+	while a < 10:
+		if a == 5:
+			break
+		print("Message")
+		a++
+	while a < 10:
+		if a == 5:
+			continue
+		print(a)
+		a++
+7. Functions
+Basic definition
+	def function():
+		print("This is our first function")
 	
+	function()	# Function call
+
+Function with return
+	def returning():
+		return "This is our first function"
 	
+	print(returning())	# Function call
+	...
+	result = resulting()
+	print(result)
+	...
+
+Multiple value return	
+	def multival():
+		return "This is a result",2
+	print(multival())
 	
+Passing parameters
+	def parameters(a):
+		print(a)
+
+	parameters("This is a parameter")
+	
+	def add(a,b):
+		c = a + beniwal
+		return c
+		
+	result = add(43,66)
+	print(result)
+
+Default parameters
+	def default_param(a, b = 6, c = 8):
+		return a + b + c
+	
+	result = default_param(7) # 7 is value of a
+	print(result)
+	
+Scope
+	def scope(a):
+		a = a + 1
+		print(a)
+		return a
+	scope(6)
+	print(a) # error not defined
+
+	def outer(a):
+		def nested(b):
+			return b * a; # use ; when nested
+		a = nested(a)
+		return a
+	
+	print(outer(4))
+	
+	def f(a):
+		def g(b):
+			return a * b
+		return g
+	print(f(6)(4))
+	
+	def f(a):
+		def g(b):
+			def h(c):
+				return a * b * c
+			return h
+		return g
+	print(f(6)(4)(3))
+
+Recursive function
+	def factorial(n):
+		if n == 1:
+			return 1
+		else:
+			return n * factorial(n-1)
+	
+	print(factorial(5))
+	
+Regular recursion 
+	def sum(n):
+			if n == 1:
+				return 1
+			else:
+				return n + sum(n-1)
+
+Tail recursion
+	def tail_sum(n, accumulator = 0):
+		if n == 0:
+			return accumulator
+		else:
+			return tail_sum(n-1,accumulator+n)
+	
+	print(sum(10))
+	print(tail_sum(10))
+Lambda Function
+	f = lambda x, y: x + y
+	print(f(2,5))
+	
+	f = lambda a: lambda b: lambda c: a * b * c
+	print(f(7)(8)(9))
+	
+	f = lambda c: lambda a, b:lambda d: (c * (a + b)) %d
+	print(f(2)(4,3)(11))
+8. Exception Handling
+Exceptions and Errors
+	print(4/0)
+	file = open("file","r") # Opening a non-existing file
+	int('1.2') # Value Error
+Handling Exceptions
+	try:
+		a = 5/0
+	except Exception as e:
+		print(e)
+		
+	try:
+		n = int(input("Enter an Integer: "))
+	except ValueError:
+		print("That is not an integer")
+		
+	try:
+		sum = 0
+		file = open('numbers.txt','r')
+		for number in file:
+			sum = sum + 1.0/int(number)
+		print(sum)
+	except ZeroDivisionError:
+		print("Number in file equal to zero!")
+	except IOError:
+		print("File DNE")
+	finally:
+		print(sum)
+		file.close()
+Throwing Exceptions
+	a = 1
+	def RaiseException(a):
+		if type(a) != type('a'):
+			raise ValueError("This is not string")
+	try:
+		raise
+
 ## Practice files
 1. helloworld.py
 2. conditional.py
