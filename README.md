@@ -142,13 +142,14 @@ Break and continue statement
 	while a < 10:
 		if a == 5:
 			break
-		print("Message")
-		a++
+		print(a)
+		a+=1
 	while a < 10:
+		a+=1
 		if a == 5:
 			continue
 		print(a)
-		a++
+		
 7. Functions
 Basic definition
 	def function():
@@ -178,7 +179,7 @@ Passing parameters
 	parameters("This is a parameter")
 	
 	def add(a,b):
-		c = a + beniwal
+		c = a + b
 		return c
 		
 	result = add(43,66)
@@ -202,8 +203,8 @@ Scope
 	def outer(a):
 		def nested(b):
 			return b * a; # use ; when nested
-		a = nested(a)
-		return a
+		x = nested(a)
+		return x
 	
 	print(outer(4))
 	
@@ -253,8 +254,14 @@ Lambda Function
 	f = lambda a: lambda b: lambda c: a * b * c
 	print(f(7)(8)(9))
 	
-	f = lambda c: lambda a, b:lambda d: (c * (a + b)) %d
+	f = lambda c: lambda a, b:lambda d: (c * (a + b)) % d
 	print(f(2)(4,3)(11))
+	
+	def adder(x):
+		return lambda y: x + y
+	add9 = adder(9)
+	add9(7)
+	
 8. Exception Handling
 Exceptions and Errors
 	print(4/0)
@@ -290,8 +297,39 @@ Throwing Exceptions
 		if type(a) != type('a'):
 			raise ValueError("This is not string")
 	try:
-		raise
-
+		RaiseException(a)
+	except ValueError as e:
+		print(e)
+		
+	def TestCase(a , b):
+		assert a < b, "a is greater than b"
+	try:
+		TestCase(2,1)
+	except AssertionError as e:
+		print(e)
+9. Data Input
+Date Input setup
+	number = input("How many Fibonacci number: ")
+	print(number)
+File Management
+	file = open("/home/wiki/file.txt", "r") # open(filename, access, buffering)
+	print(file.read())
+	file.close() # After using file close the file
+Read a specific number of characters from a file	
+	print(file.read(5)) # First five character
+	print(file.tell()) # It tells the current position of the pointer in the file.
+	file.seek(n) # Move pointer to nth character
+Read file per line
+	file = open("<path>", "r")
+	for line in file
+		print(line)
+	file.close()
+File attributes
+	file = open("<path>", "r")
+	print("File Name: " + file.name)
+	print("is closed: " + str(file.closed))
+	print("Mode " + file.mode)
+	
 ## Practice files
 1. helloworld.py
 2. conditional.py
