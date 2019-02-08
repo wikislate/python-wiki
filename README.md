@@ -308,7 +308,7 @@ Throwing Exceptions
 	except AssertionError as e:
 		print(e)
 9. Data Input
-Date Input setup
+Data Input setup
 	number = input("How many Fibonacci number: ")
 	print(number)
 File Management
@@ -329,6 +329,86 @@ File attributes
 	print("File Name: " + file.name)
 	print("is closed: " + str(file.closed))
 	print("Mode " + file.mode)
+Write to a file
+	file = open("file.txt", "w+") # w - write mode, w+ read-write
+	file.write("This is new line in the file")
+	file.seek(0) # Seek a position to write
+	file.write("New text")
+	print(file.read())
+	file.close()
+10. Data Structures
+Tuple- Sequence of immutable elements
+	tup = ('one', 'two', 'three', 'four', 'five', 'six')
+	tup1 = 5, 'pqr', True, False
+	tup2 = 'A'
+	tup3 = ('A',)		# When there is one element, comma in the end is mandatory 
+	print(tup[0])		# Accessing first element
+	print(tup[-1])		# Accessing last element
+	print(tup[0:2])		# tup[A:B] after Ath upto Bth, here ('one', 'two')
+	print(tup[2:5])		# Starting after 2nd upto 5th, here ('three', 'four', 'five')
+	try:				# Tuple elements cannot be change
+		tup[3] = 5
+	axcept Exception as e:
+		print(e)
+	tup = tup + ('seven',)			# Elements can be added at the end
+	tup = tup + ('eight', 'nine')	# Adding multiple elements
+	tup = tup + tup1				# Adding two tuple
+	print(tup * 5)			# Prints all elements 5 times
+	print('six' in tup)		# Boolean output, here True
+	for i in tup: print(i)	# traverse a tuple using for loop
+	def multiple_result():	# Use in a function to return multiple values
+		return(1,2,'abc')
+	print(multiple_result())
+Built-in Tuple functions
+	len(tup)		# Length
+	max(tup)		# Maximum value, for string alphabetical order 
+	min(tup)		# Minimum value
+	tuple(list)		# Convert a list into a tuple 
+Lists
+	list = ['one', 'two', 'three', 'four', 'five', 'six']
+	list1 = [5, 'pqr', True, False, (1, 2)]	# A list containing a tuple
+	print(list1[2])				# Accessing an element
+	print(list1[-1])			# Accessing the last element
+	print(list1[4])				# Accessing tuple from the list
+	print(list1[4][0])			# Accessing a tuple element from the list
+	print(list1 + ['5'])		# Add an element
+	print(list1 * 2)			# Repetition 
+	print(2 in list1)			# If element exists or not in the list
+	print(list1 == [1, 2, 3])	# Compare lists
+	print(list1[:2])			# First 2 elements from the list
+	list1[1] = xyz				# Updating a list element
+	del list1[2]				# Deleting a list element
+	len([1,2,3])				# Length
+	list1 + list2				# Concatenation
+	for i in list1: print(i)	# Traverse 
+Built-in list functions
+	len(list)					# Length
+	max(list)					# Maximum value
+	min(list)					# Minimum value
+	list(tup)					# Convert a tuple in to a list
+Built-in methods
+	list.append(obj)			# Append an object obj in the list
+	list.count(obj)				# Count of an object obj
+	list.extend(seq)			# Extend a list or tuple in the list
+	list.index(obj)				# Returns the lowest index of obj
+	list.insert(index, obj)		# Inserts object obj into list at offset index, shifting right all values next to offset index
+	list.pop(n)					# Removes object at offset index n, last, if n is not provided
+	list.remove(obj)			# Removes object obj from the list
+	list.reverse()				# Reverses objects of the list in place
+	list.sort()					# Sort the list, not supported if elements are mixed datatype
+	
+	def addition(n): 
+		return n + n 
+	# We double all elements of a list/tuple using map() 
+	numbers = [1, 2, 3, 4] 
+	result = map(addition, numbers) 
+	print(list(result)) 
+	
+	numbers = [1, 2, 3, 4]
+	print(list(map(lambda x: x + x, numbers)))		# Using lambda function
+	
+	print(list(map(lambda x: x + x, [1, 2, 3, 4])))	# Previously undefined list
+	
 	
 ## Practice files
 1. helloworld.py
@@ -336,3 +416,11 @@ File attributes
 3. if_else_oneline.py
 4. while_fibonacci.py
 5. for_readfile.py
+6. map.py
+7. map-lambda.py
+8. map-add-lists.py
+9. map-listify.py
+10. filter.py
+11. filter-list.py
+12. filter-odd-even.py
+13. reduce-sum.py
