@@ -320,7 +320,7 @@ Read a specific number of characters from a file
 	print(file.tell()) # It tells the current position of the pointer in the file.
 	file.seek(n) # Move pointer to nth character
 Read file per line
-	file = open("<path>", "r")
+	file = open("<path>", "rb")			# flag b - binary, t - text (default)
 	for line in file
 		print(line)
 	file.close()
@@ -330,12 +330,25 @@ File attributes
 	print("is closed: " + str(file.closed))
 	print("Mode " + file.mode)
 Write to a file
+	"x" - Create - will create a file, returns an error if the file exist
+	"a" - Append - will create a file if the specified file does not exist
+	"w" - Write - will create a file if the specified file does not exist
 	file = open("file.txt", "w+") # w - write mode, w+ read-write
 	file.write("This is new line in the file")
 	file.seek(0) # Seek a position to write
 	file.write("New text")
 	print(file.read())
 	file.close()
+Delete a file/folder
+	import os
+	os.remove("file.txt")				# Delete file
+	os.rmdir("myfolder")				# Delete folder
+	
+	if os.path.exists("demofile.txt"):
+	  os.remove("demofile.txt")
+	else:
+	  print("The file does not exist")
+	
 10. Data Structures
 Tuple- Sequence of immutable elements
 	tup = ('one', 'two', 'three', 'four', 'five', 'six')
@@ -348,7 +361,7 @@ Tuple- Sequence of immutable elements
 	print(tup[2:5])		# Starting after 2nd upto 5th, here ('three', 'four', 'five')
 	try:				# Tuple elements cannot be change
 		tup[3] = 5
-	axcept Exception as e:
+	except Exception as e:
 		print(e)
 	tup = tup + ('seven',)			# Elements can be added at the end
 	tup = tup + ('eight', 'nine')	# Adding multiple elements
@@ -408,6 +421,75 @@ Built-in methods
 	print(list(map(lambda x: x + x, numbers)))		# Using lambda function
 	
 	print(list(map(lambda x: x + x, [1, 2, 3, 4])))	# Previously undefined list
+Dictionary
+	dict = {'Name': 'Vivek', 'EMP-ID': 694, 'Team': 'DevOps'}	# Definition 'Key': 'Value' pairs
+	print(dict)													# Printing entire dictionary
+	print(dict['Name'])											# Accessing using key
+	for key in dict: print(key)									# Printing all keys
+	for key,value in dict.items(): print(key, value)			# Printing all keys and values
+	dict['key'] = <new value>									# Adding/updating dictionary
+	del dict['key']												# Remove an entry with a key
+	del dict													# Delete dictionary
+	if 'key' in dict: print("Key found")
+Built-in dictionary functions
+	len(dict)													# Length
+	str(dict)													# Produces a printable string representation
+Built-in dictionary methods
+	dict.clear()												# Remove all entries
+	dict.copy()													# Create a shallow copy
+	dict.fromkeys(seq)											# Create a new dictionary with keys from seq
+	dict.get(key)												# Access value using key
+	for key,value in dict.items(): print(key, value)			# Printing all keys and values
+	dict.keys()
+	dict.values()
+	list(dict.values())											# Create a list with dictionary values
+	tuple(dict.values())
+	dict.update(dict2)											# Adding/Updating value to dict from dict2
+	dict.setdefault('key', 'default value'))					# Add key if not exists with default value and return value
+Sets
+	Data structure with unique elements
+	set1 = set(['one', 'two', 'three', 'four', 'one', 'three'])
+	print(set1)									# Prints only one occurrence
+	set2 = set(['one', 'three', 'four', 'five'])
+	print(set1 | set2)				# Union of sets, here (['one', 'two', 'three', 'four', 'five'])
+	print(set1 ^ set2)				# Intersection, here (['two', 'five'])
+	key in s						# containment check
+	key not in s					# non-containment check
+	set1 == set2					# set1 is equivalent to set2
+	set1 != set2					# set1 is not equivalent to set2
+	set1 <= set2					# set1 is subset of set2 
+	set1 < set2						# set1 is proper subset of set2 
+	set1 >= set2					# set1is superset of set2
+	set1 > set2						# set1 is proper superset of set2
+	set1 | set2						# the union of set1 and set2
+	set1 & set2						# the intersection of set1 and set2
+	set1 – set2						# the set of elements in set1 but not set2
+	set1 ˆ set2						# the set of elements in precisely one of set1 or set2
+	set1.add(x)
+	set1.remove(x)
+	set1.discard(x)
+	set1.union(set2)
+	set1.intersection(set2)
+	set1.difference(set2)
+	clear(set1)
+	set1.update(set2)				# The method update adds elements to a set.
+	set2 = set1.copy()				# Create a shallow copy
+11. Modules & Packages
+Modules - Files containing datatype, functions etc
+	import <module name>			# Import a module
+	import primeModule				# Import primeModule
+	primeModule.PrimeTo(50)			# Calling a module function
+	print(dir(primeModule))			# Print all functions of a module
+	import primeModule as pr		# Import as an alias
+	pr.PrimeTo(100)					# Calling a module function by alias
+	from primeModule import PrimeTo	# Import a single function from a module
+	PrimeTo(100)					# Using imported function
+Packages - Directories containing modules
+	import main.mod as pkg			# Import module mod from package main
+	pkg.list[0]						# Accessing a list item from package
+Built-in Modules
+	math
+	os
 	
 	
 ## Practice files
@@ -424,3 +506,17 @@ Built-in methods
 11. filter-list.py
 12. filter-odd-even.py
 13. reduce-sum.py
+14. dictionary.py
+15. dictionary-keyError.py
+16. dictionary-function.py
+17. dictionary-shallow-copy.py
+18. sets.py
+19. set-update.py
+20. set-copy.py
+21. set-add.py
+22. set-vowel-count.py
+23. set-function.py
+24. module.py --> primeModule.py
+25. packages.py --> main/
+27. mathmodule.py
+29. osmodule.py
